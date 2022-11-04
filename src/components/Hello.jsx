@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 
 export const Hello = (props) => {
   console.log('@@@@@ Hello');
-  const [isActive, setIsActive] = useState(false);
+  // const [isActive, setIsActive] = useState(false);
+  const [isActive, toggleActive] = useReducer((pre) => !pre, false);
 
   return (
     <>
@@ -10,7 +11,8 @@ export const Hello = (props) => {
       <h3>
         날씨: {props.weather} - {isActive && '^^'}
       </h3>
-      <button onClick={() => setIsActive(!isActive)}>
+      {/* <button onClick={() => setIsActive(!isActive)}> */}
+      <button onClick={toggleActive}>
         Toggle Active: {isActive ? 'Active!' : ''}
       </button>
     </>
